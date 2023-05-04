@@ -40,7 +40,7 @@ private recipes: Recipe[] = [
           new Ingredient('Flour', 1),
          new Ingredient('Sugar', 1),
          new Ingredient('Quark Cheese', 2)
-        ])
+        ]),
 
       ];
 
