@@ -3,12 +3,13 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { RecipeService } from './../recipe.service';
-
+import { Recipe } from './../recipe.model';
 @Component({
   selector: 'app-recipe-edit',
   templateUrl: './recipe-edit.component.html',
   styleUrls: ['./recipe-edit.component.css']
 })
+
 export class RecipeEditComponent implements OnInit {
   id: number;
   editMode = false;
@@ -24,12 +25,22 @@ export class RecipeEditComponent implements OnInit {
       this.id = +params['id'];
       this.editMode = params['id'] !=null;
       this.initForm();
-    });
+    }
+    );
   }
 
 onSubmit() {
-  console.log(this.recipeForm);
-}
+  //const newRecipe = new Recipe(
+  // this.recipeForm.value['name'],
+  // this.recipeForm.value['description'],
+  // this.recipeForm.value['imagePath'],
+  // this.recipeForm.value['ingredients']);
+  if (this.editMode){
+    this.recipeService.updateRecipe(this.id, this.recipeForm.value);
+  }else{
+    this.recipeService.addRecipe(this.recipeForm.value);
+  }
+  }
 
 onAddIngredient() {
   (<FormArray>this.recipeForm.get('ingredients')).push(
@@ -39,7 +50,6 @@ onAddIngredient() {
         Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/)])
     })
   );
-
 }
 
 get controls(){
@@ -66,7 +76,6 @@ get controls(){
                 Validators.required,
                 Validators.pattern(/^[1-9]+[0-9]*$/)
               ])
-
             })
           );
         }
@@ -80,6 +89,6 @@ get controls(){
       'ingredients': recipeIngredients
     });
   }
-
 }
+
 
