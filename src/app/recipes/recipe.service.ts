@@ -11,7 +11,7 @@ import { Recipe } from './recipe.model';
 export class RecipeService {
 recipesChanged = new Subject<Recipe[]>();
 
-private recipes: Recipe[] = [
+/*private recipes: Recipe[] = [
         new Recipe('Beef Skewers', 'Beef Skewers','../../../assets/img/img-1.jpg',
         [new Ingredient('Meat', 1),
         new Ingredient('Pepper', 1),
@@ -42,7 +42,8 @@ private recipes: Recipe[] = [
          new Ingredient('Sugar', 1),
          new Ingredient('Quark Cheese', 2)
         ])
-      ];
+      ];*/
+      private recipes: Recipe[] = [];
 
       constructor(private slService: ShoppingListService){}
 
