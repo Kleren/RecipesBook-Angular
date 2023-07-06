@@ -1,4 +1,4 @@
-# Angular -The Complete Guide (2023 Edition)
+# Angular - The Complete Guide (2023 Edition)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.7.
 
